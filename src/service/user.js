@@ -1,21 +1,6 @@
 const connection = require("../app/database");
 class UserService {
   async register(user) {
-    const userList = await connection
-      .execute(`SELECT * FROM user_account WHERE name =?`, [user.name])
-      .then((res) => {
-        const [values] = res;
-        return values;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    if (userList.length > 0) {
-      return {
-        code: 1,
-        msg: "用户已存在"
-      };
-    }
     const newCountResult = await connection
       .execute(`INSERT INTO user_account (name, password) VALUES (?,?)`, [user.name, user.password])
       .then((res) => {
@@ -34,6 +19,18 @@ class UserService {
         msg: "注册成功"
       };
     }
+  }
+  async login(user) {
+    const userList = await connection
+      .execute(`SELECT * FROM user_account WHERE name =?`, [user.name])
+      .then((res) => {
+        const [values] = res;
+        return values;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    return userList;
   }
 }
 
