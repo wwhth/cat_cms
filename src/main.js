@@ -9,7 +9,9 @@
 // const app = new Koa();
 // app.use(userRouter.routes()).use(userRouter.allowedMethods());
 const app = require("./app");
+
 const SERVER_PORT = require("./config/server").SERVER_PORT;
+require('./utils/handle-error');
 const consolePng = require("console-png");
 consolePng.attachTo(console);
 app.listen(SERVER_PORT, () => {
