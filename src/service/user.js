@@ -21,6 +21,7 @@ class UserService {
     }
   }
   async login(user) {
+    console.log("%c Line:25 🥪 user", "color:#42b983", user);
     const userList = await connection
       .execute(`SELECT * FROM user_account WHERE name =?`, [user.name])
       .then((res) => {
