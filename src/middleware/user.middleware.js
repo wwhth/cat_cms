@@ -11,7 +11,7 @@ const verifyUser = async (ctx, next) => {
       ctx
     );
   }
-  const userList = await userService.login(ctx.request.body);
+  const userList = await userService.getUserList(ctx.request.body);
   if (userList.length > 0) {
     return ctx.app.emit(
       "error",
