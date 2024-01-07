@@ -12,6 +12,7 @@ const userRouter = new KoaRouter({
 // const privateKey = fs.readFileSync(path.resolve(__dirname, "../keys/private.key"));
 // const publicKey = fs.readFileSync(path.resolve(__dirname, "../keys/public.key"));
 userRouter.post("/register", verifyUser, handlePassword, userController.register);
+
 // userRouter.get("/setToken", (ctx) => {
 //   // 设置token
 //   const payload = {
