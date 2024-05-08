@@ -9,7 +9,7 @@ async function login(ctx, next) {
       "error",
       {
         status: -1001,
-        msg: "用户名或密码不能为空"
+        message: "用户名或密码不能为空"
       },
       ctx
     );
@@ -29,7 +29,7 @@ async function login(ctx, next) {
         "error",
         {
           status: -1002,
-          msg: "密码错误"
+          message: "密码错误"
         },
         ctx
       );
@@ -39,7 +39,7 @@ async function login(ctx, next) {
       "error",
       {
         status: -1003,
-        msg: "账号不存在"
+        message: "账号不存在"
       },
       ctx
     );
