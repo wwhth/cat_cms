@@ -34,29 +34,36 @@ const handlePassword = async (ctx, next) => {
 };
 const verifyAuth = async (ctx, next) => {
   // 判断用户是否登录
-  console.log(ctx.headers.authorization)
+  console.log(ctx.headers.authorization);
   const token = ctx.headers.authorization.replace("Bearer ", "");
   try {
     const payload = jwt.verify(token, publicKey, {
       algorithms: ["RS256"]
     });
-    console.log(payload)
+    ctx.state.user = payload;
+    console.log(payload, "---payload");
     if (payload) {
       await next();
     } else {
-      return ctx.app.emit('error', {
-        status: -1003,
-        msg: '无效token或者token已过期'
-      }, ctx)
+      return ctx.app.emit(
+        "error",
+        {
+          status: -1003,
+          msg: "无效token或者token已过期"
+        },
+        ctx
+      );
     }
   } catch (error) {
-    return ctx.app.emit('error', {
-      status: -1003,
-      msg: '无效token或者token已过期'
-    }, ctx)
+    return ctx.app.emit(
+      "error",
+      {
+        status: -1003,
+        msg: "无效token或者token已过期"
+      },
+      ctx
+    );
   }
-
-
 };
 module.exports = {
   verifyUser,

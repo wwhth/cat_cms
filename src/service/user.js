@@ -33,6 +33,22 @@ class UserService {
       });
     return userList;
   }
+  // 获取菜单
+  async getMenuList(user) {
+    const menuList = await connection
+      .execute(
+        `SELECT bm.* ,JSON_ARRAYAGG(JSON_OBJECT('id',bmc.id,'name',bmc.name,'parentId',bmc.parentId)) as children FROM  blog_menu bm left join blog_menu_child bmc ON bm.id = bmc.parentId`
+      )
+      .then((res) => {
+        console.log("%c Line:41 🍒 res", "color:#93c0a4", res);
+        const [values] = res;
+        return values;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    return menuList;
+  }
 }
 
 module.exports = new UserService();

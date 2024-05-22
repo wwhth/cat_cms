@@ -21,5 +21,10 @@ class UserController {
     console.log("%c Line:6 🥓 result", "color:#4fff4B", result);
     ctx.body = result;
   }
+  async getMenuList(ctx) {
+    console.log("%c Line:25 🍰 ctx", "color:#f5ce50", ctx);
+    const result = await userService.getMenuList();
+    ctx.body = result;
+  }
 }
 module.exports = new UserController(); // 导出实例

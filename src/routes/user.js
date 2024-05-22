@@ -3,7 +3,7 @@
 const KoaRouter = require("@koa/router");
 // const jwt = require("jsonwebtoken");
 const userController = require("../controller/user");
-const { verifyUser, handlePassword } = require("../middleware/user.middleware");
+const { verifyUser, handlePassword, verifyAuth } = require("../middleware/user.middleware");
 
 const userRouter = new KoaRouter({
   prefix: "/api/v1/user"
@@ -12,7 +12,7 @@ const userRouter = new KoaRouter({
 // const privateKey = fs.readFileSync(path.resolve(__dirname, "../keys/private.key"));
 // const publicKey = fs.readFileSync(path.resolve(__dirname, "../keys/public.key"));
 userRouter.post("/register", verifyUser, handlePassword, userController.register);
-
+userRouter.get("/getMenu", verifyAuth, userController.getMenuList);
 // userRouter.get("/setToken", (ctx) => {
 //   // 设置token
 //   const payload = {
