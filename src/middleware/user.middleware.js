@@ -51,7 +51,8 @@ const verifyAuth = async (ctx, next) => {
           status: -1003,
           msg: "无效token或者token已过期"
         },
-        ctx
+        ctx,
+        401
       );
     }
   } catch (error) {
@@ -61,7 +62,8 @@ const verifyAuth = async (ctx, next) => {
         status: -1003,
         msg: "无效token或者token已过期"
       },
-      ctx
+      ctx,
+      401
     );
   }
 };
