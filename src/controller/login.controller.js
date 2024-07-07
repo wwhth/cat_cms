@@ -8,7 +8,7 @@ class LoginController {
       id,
       name
     };
-    const token = jwt.sign(payload, privateKey, { expiresIn: "1h", algorithm: "RS256" });
+    const token = jwt.sign(payload, privateKey, { expiresIn: "30d", algorithm: "RS256" });
     console.log("%c Line:12 🥕 token", "color:#ed9ec7", token);
     ctx.body = {
       code: 0,

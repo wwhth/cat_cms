@@ -4,20 +4,20 @@
 // // const CFonts = require('cfonts');
 // const userRouter = require("./routes/user");
 const path = require("node:path");
-const os = require("node:os");
+// const os = require("node:os");
 
-console.log(
-  "%c Line:9 🥑",
-  "color:#e41a6a",
-  os.platform(),
-  os.release(),
-  os.type(),
-  os.version(),
-  os.homedir(),
-  os.arch(),
-  os.cpus().length,
-  os.networkInterfaces()
-);
+// console.log(
+//   "%c Line:9 🥑",
+//   "color:#e41a6a",
+//   os.platform(),
+//   os.release(),
+//   os.type(),
+//   os.version(),
+//   os.homedir(),
+//   os.arch(),
+//   os.cpus().length,
+//   os.networkInterfaces()
+// );
 // const SERVER_PORT = require("./config/server").SERVER_PORT;
 
 // const app = new Koa();

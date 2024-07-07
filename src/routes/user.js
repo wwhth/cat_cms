@@ -2,7 +2,7 @@
 // const path = require("node:path");
 const KoaRouter = require("@koa/router");
 // const jwt = require("jsonwebtoken");
-const userController = require("../controller/user");
+const userController = require("../controller/user.controller");
 const { verifyUser, handlePassword, verifyAuth } = require("../middleware/user.middleware");
 
 const userRouter = new KoaRouter({
