@@ -1,5 +1,5 @@
 const CategoryService = require("../service/category.service");
-class categoryController {
+class CategoryController {
 	async getAll(ctx) {
 		const categoryList = await CategoryService.getAll();
 		console.log("🚀 ~ CategoryService ~ getAll ~ categoryList:", categoryList)
@@ -30,4 +30,4 @@ class categoryController {
 	}
 }
 
-module.exports = new categoryController();
+module.exports = new CategoryController();

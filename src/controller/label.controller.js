@@ -1,5 +1,5 @@
 const LabelService = require("../service/label.service");
-class labelController {
+class LabelController {
 	async getAll(ctx) {
 		const labelList = await LabelService.getAll();
 		ctx.body = {
@@ -30,4 +30,4 @@ class labelController {
 
 }
 
-module.exports = new labelController();
+module.exports = new LabelController();

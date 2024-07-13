@@ -1,6 +1,6 @@
 const connection = require("../app/database");
 
-class categoryService {
+class CategoryService {
 	async getCategoryById(id) {
 		const result = await connection.query("SELECT * FROM blog_category WHERE id = ?", [id]).then((res) => {
 			const [values] = res;
@@ -79,4 +79,4 @@ class categoryService {
 }
 
 
-module.exports = new categoryService();
+module.exports = new CategoryService();
