@@ -11,9 +11,22 @@ class ArticleController {
 		};
 	}
 	async getArticleById(ctx) { }
-	async createArticle(ctx) { }
-	async deleteArticle(ctx) { }
-	async updateArticle(ctx) { }
+	async createArticle(ctx) {
+		const result = await articleService.createArticle(ctx.request.body);
+		console.log("🚀 ~ ArticleController ~ createArticle ~ result:", result)
+
+		ctx.body = result
+	}
+	async deleteArticle(ctx) {
+
+		const result = await articleService.deleteArticle(ctx.request.params.id);
+		ctx.body = result
+	}
+	async updateArticle(ctx) {
+
+		const result = await articleService.updateArticle(ctx.request.body);
+		ctx.body = result
+	}
 	async searchArticle(ctx) { }
 }
 
