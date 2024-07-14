@@ -2,11 +2,10 @@
 FROM node
 # 创建容器内的项目存放目录
 RUN mkdir -p /home/blog_backed
-COPY package.json /home/blog_backed
 WORKDIR /home/blog_backed
 
 #  将Dockerfile当前目录下所有文件拷贝至容器内项目目录并安装项目依赖
-COPY . /home/Service
+COPY . /home/blog_backed
 RUN npm install
 
 # 容器对外暴露的端口号，要和node项目配置的端口号一致
