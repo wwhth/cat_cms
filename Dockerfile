@@ -1,5 +1,5 @@
 # 基础镜像为node，版本为v9.2.0
-FROM node
+FROM node:latest
 # 创建容器内的项目存放目录
 RUN mkdir -p /home/blog_backed
 WORKDIR /home/blog_backed
