@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/main.js "
+    "dev": "nodemon src/main.js",
+    "start": "pm2 start ecosystem.config.json"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +24,7 @@
     "mysql2": "^3.6.5"
   },
   "dependencies": {
-    "koa2-cors": "^2.0.6"
+    "koa2-cors": "^2.0.6",
+    "pm2": "^5.4.2"
   }
 }
