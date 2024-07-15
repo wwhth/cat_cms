@@ -1,4 +1,4 @@
-# 基础镜像为node，版本为v9.2.0
+# 基础镜像为node，版本为最新
 FROM node:latest
 # 创建容器内的项目存放目录
 RUN mkdir -p /home/blog_backed
@@ -6,6 +6,8 @@ WORKDIR /home/blog_backed
 
 #  将Dockerfile当前目录下所有文件拷贝至容器内项目目录并安装项目依赖
 COPY . /home/blog_backed
+# 配置npm镜像
+RUN npm config set registry https://registry.npmmirror.com
 RUN npm install pm2 -g
 RUN npm install
 # 容器对外暴露的端口号，要和node项目配置的端口号一致
