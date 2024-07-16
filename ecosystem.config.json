@@ -2,16 +2,18 @@
   "apps": [
     {
       "name": "blog_backed",
-      "script": "./src/main.js",
-      "instances": 4,
-      "exec_mode": "cluster",
-      "watch": true,
-      "max_memory_restart": "200M",
+      "script": "src/main.js",
+      "watch": ["routes"],
+      "max_memory_restart": "10M",
       "error_file": "./logs/err.log",
       "out_file": "./logs/out.log",
       "log_date_format": "YYYY-MM-DD HH:mm Z",
+      "min_uptime": "120s",
+      "max_restarts": 8,
+      "autorestart": false,
+      "ignore_watch": ["node_modules", "logs", "src/assets"],
       "env": { "NODE_ENV": "development", "PORT": 3001 },
-      "env_production": { "NODE_ENV": "production", "PORT": 3001 }
+      "kill_timeout": 10000
     }
   ]
 }
