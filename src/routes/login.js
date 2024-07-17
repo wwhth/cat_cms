@@ -7,7 +7,7 @@ const loginRouter = new KoaRouter({
 });
 
 loginRouter.post("/", login, loginController.loginAndToken);
-loginRouter.post("/test", verifyAuth, (ctx) => {
+loginRouter.get("/test", (ctx) => {
   ctx.body = {
     status: 200,
     message: "test成功"
