@@ -7,10 +7,10 @@ const articleRouter = new KoaRouter({
 });
 
 articleRouter.get('/', verifyAuth, articleController.getAll)
-articleRouter.get("/get/:id", verifyAuth, articleController.getArticleById);
+articleRouter.get("/get/:id", verifyAuth, articleController.getArticleById); // todo
 articleRouter.post("/create", articleController.createArticle);
 articleRouter.get("/delete/:id", verifyArticleExist, articleController.deleteArticle);
 articleRouter.post("/update", verifyArticleExist, articleController.updateArticle);
-articleRouter.get("/search", verifyAuth, articleController.searchArticle);
+articleRouter.get("/search", verifyAuth, articleController.searchArticle); // todo
 
 module.exports = articleRouter;
