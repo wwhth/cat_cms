@@ -7,8 +7,9 @@ WORKDIR /home/blog_backed
 #  将Dockerfile当前目录下所有文件拷贝至容器内项目目录并安装项目依赖
 COPY . /home/blog_backed
 
-RUN npm config set proxy http://101.200.232.30:3001
-RUN npm config set https-proxy http://101.200.232.30:3001
+# RUN npm config set proxy http://101.200.232.30:3001
+# RUN npm config set https-proxy http://101.200.232.30:3001
+RUN npm config set registry https://registry.npmmirror.com
 RUN npm install
 RUN npm install pm2 -g
 # 容器对外暴露的端口号，要和node项目配置的端口号一致
