@@ -10,7 +10,22 @@ class ArticleController {
 			data: articleList,
 		};
 	}
-	async getArticleById(ctx) { }
+	async getArticleById(ctx) {
+		const result = await articleService.getArticleById(ctx.request.params.id);
+		ctx.body = ctx.body = {
+			code: 200,
+			message: "获取成功",
+			data: result,
+		};
+	}
+	async getArticleByLabelId(ctx) {
+		const result = await articleService.getArticleByLabelId(ctx.request.params.id);
+		ctx.body = ctx.body = {
+			code: 200,
+			message: "获取成功",
+			data: result,
+		};
+	}
 	async createArticle(ctx) {
 		const result = await articleService.createArticle(ctx.request.body);
 		console.log("🚀 ~ ArticleController ~ createArticle ~ result:", result)

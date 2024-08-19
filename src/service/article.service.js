@@ -5,7 +5,7 @@ class ArticleService {
   async getAll() {
     const articleList = await connection
       .query(
-        "select ba.id as id, ba.title as title,ba.author as userid,ua.`name` as username, bc.id as category_id,bc.category_name as category,bl.label_name as label,bl.id as label_id,ba.content as content from blog_article ba LEFT JOIN blog_category bc ON  ba.category_id = bc.id LEFT JOIN blog_label bl on ba.label_id =bl.id LEFT JOIN user_account ua on ba.author = ua.id;"
+        "select ba.id as id, ba.title as title,ba.intro as introduce, ba.author as userid,ua.`name` as username,ba.created_at as date, bc.id as category_id,bc.category_name as category,bl.label_name as label,bl.id as label_id,ba.content as content from blog_article ba LEFT JOIN blog_category bc ON  ba.category_id = bc.id LEFT JOIN blog_label bl on ba.label_id =bl.id LEFT JOIN user_account ua on ba.author = ua.id;"
       )
       .then((res) => {
         const [values] = res;
@@ -18,7 +18,7 @@ class ArticleService {
   }
   async getArticleById(id) {
     const article = await connection
-      .query("select * from blog_article where id = ?", [id])
+      .query("select ba.id as id, ba.title as title,ba.intro as introduce, ba.author as userid,ua.`name` as username,ba.created_at as date, bc.id as category_id,bc.category_name as category,bl.label_name as label,bl.id as label_id,ba.content as content from blog_article ba left join blog_label bl on ba.label_id = bl.id left join blog_category bc on ba.category_id = bc.id LEFT JOIN user_account ua on ba.author = ua.id where ba.id = ?;", [id])
       .then((res) => {
         console.log("🚀 ~ ArticleService ~ article ~ res:", res);
         const values = res[0];
@@ -74,9 +74,9 @@ class ArticleService {
     return result;
   }
   async updateArticle(body) {
-    const { id, title, content, category_id, label_id } = body;
+    const { id, title, content, category_id, label_id, intro } = body;
     const result = await connection
-      .query("update blog_article set title = ?,content = ?,category_id = ?,label_id = ? where id = ?", [title, content, category_id, label_id, id])
+      .query("update blog_article set title = ?,intro =?,content = ?,category_id = ?,label_id = ? where id = ?", [title, intro, content, category_id, label_id, id])
       .then((_) => {
         return {
           code: 200,
@@ -91,7 +91,19 @@ class ArticleService {
       });
     return result;
   }
-  async searchArticle() {}
+  async searchArticle() { }
+  async getArticleByLabelId(id) {
+    const article = await connection
+      .query("select ba.id as id, ba.title as title,ba.intro as introduce, ba.author as userid,ua.`name` as username,ba.created_at as date, bc.id as category_id,bc.category_name as category,bl.label_name as label,bl.id as label_id,ba.content as content from blog_article ba left join blog_label bl on ba.label_id = bl.id left join blog_category bc on ba.category_id = bc.id LEFT JOIN user_account ua on ba.author = ua.id where bl.id = ?;", [id])
+      .then((res) => {
+        const values = res[0];
+        return values;
+      })
+      .catch((err) => {
+        console.log("🚀 ~ getArticleByLabelId ~ result ~ err:", err);
+      });
+    return article;
+  }
 }
 
 module.exports = new ArticleService();

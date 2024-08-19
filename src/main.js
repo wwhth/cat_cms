@@ -32,5 +32,5 @@ console.log("%c Line:17 🍇", "color:#ffdd4d", path.sep);
 consolePng.attachTo(console);
 app.listen(SERVER_PORT, () => {
   console.png(require("fs").readFileSync(__dirname + "/assets/Cat1.png"));
-  console.log(`server is running at port ${SERVER_PORT}`);
+  console.log(`server is running at port http://localhost:${SERVER_PORT}/api/v1/login/test`);
 });

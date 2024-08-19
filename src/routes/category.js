@@ -6,7 +6,7 @@ const categoryRouter = new KoaRouter({
 	prefix: "/api/v1/category"
 });
 
-categoryRouter.get("/", verifyAuth, categoryController.getAll);
+categoryRouter.get("/", categoryController.getAll);
 categoryRouter.post("/create", verifyAuth, isSameCategory, categoryController.create);
 categoryRouter.get("/delete/:id", verifyAuth, categoryIsExit, categoryController.delete);
 categoryRouter.post("/update", verifyAuth, categoryIsExit, isSameCategory, categoryController.update);
