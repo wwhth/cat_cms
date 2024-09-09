@@ -30,15 +30,16 @@ class ArticleService {
     return article;
   }
   async createArticle(body) {
-    const { title, userid, content, category_id, label_id } = body;
+    const { title, userid, content, category_id, label_id, introduce } = body;
     console.log("%c Line:34 🍪 title, userid, content, category_id, label_id", "color:#ea7e5c", title, userid, content, category_id, label_id);
     const result = await connection
-      .query("insert into blog_article (title,author,content,category_id,label_id) values (?,?,?,?,?)", [
+      .query("insert into blog_article (title,author,content,category_id,label_id,intro) values (?,?,?,?,?,?)", [
         title,
         userid,
         content,
         category_id,
-        label_id
+        label_id,
+        introduce
       ])
       .then((_) => {
         return {
@@ -74,9 +75,9 @@ class ArticleService {
     return result;
   }
   async updateArticle(body) {
-    const { id, title, content, category_id, label_id, intro } = body;
+    const { id, title, content, category_id, label_id, introduce } = body;
     const result = await connection
-      .query("update blog_article set title = ?,intro =?,content = ?,category_id = ?,label_id = ? where id = ?", [title, intro, content, category_id, label_id, id])
+      .query("update blog_article set title = ?,intro =?,content = ?,category_id = ?,label_id = ? where id = ?", [title, introduce, content, category_id, label_id, id])
       .then((_) => {
         return {
           code: 200,
