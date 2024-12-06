@@ -31,13 +31,8 @@ class ArticleService {
     return article;
   }
   async createArticle(body) {
-<<<<<<< HEAD
     const { title, userid, content, category_id, label_id,artical_type } = body;
     console.log("%c Line:34 🍪 title, userid, content, category_id, label_id", "color:#ea7e5c", title, userid, content, category_id, label_id,artical_type);
-=======
-    const { title, userid, content, category_id, label_id, introduce } = body;
-    console.log("%c Line:34 🍪 title, userid, content, category_id, label_id", "color:#ea7e5c", title, userid, content, category_id, label_id);
->>>>>>> ac728b1889189bf4c0ead5e9e57e2aae8adc3adc
     const result = await connection
       .query("insert into blog_article (title,author,content,category_id,label_id,intro) values (?,?,?,?,?,?)", [
         title,
