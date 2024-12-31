@@ -76,10 +76,10 @@ class ArticleService {
     return result;
   }
   async updateArticle(body) {
-    const { id, title, content, category_id, label_id, intro,artical_type } = body;
+    const { id, title, content, category_id, label_id, introduce,artical_type } = body;
     console.log("🚀 ~ ArticleService ~ updateArticle ~ artical_type:", artical_type)
     const result = await connection
-      .query("update blog_article set title = ?,intro =?,content = ?,category_id = ?,label_id = ?,artical_type =?  where id = ?", [title, intro, content, category_id, label_id,artical_type, id])
+      .query("update blog_article set title = ?,intro =?,content = ?,category_id = ?,label_id = ?,artical_type =?  where id = ?", [title, introduce, content, category_id, label_id,artical_type, id])
       .then((_) => {
         return {
           code: 200,
