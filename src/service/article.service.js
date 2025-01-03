@@ -31,7 +31,7 @@ class ArticleService {
     return article;
   }
   async createArticle(body) {
-    const { title, userid, content, category_id, label_id,artical_type } = body;
+    const { title, userid, content, category_id, label_id,artical_type,introduce } = body;
     console.log("%c Line:34 🍪 title, userid, content, category_id, label_id", "color:#ea7e5c", title, userid, content, category_id, label_id,artical_type);
     const result = await connection
       .query("insert into blog_article (title,author,content,category_id,label_id,intro) values (?,?,?,?,?,?)", [
